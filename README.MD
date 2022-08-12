@@ -7,11 +7,15 @@ Converts a YAML file with legacy Bukkit color codes into a new YAML file with Ad
 
 ## Command-Line Usage
 Run the following command:
-- `java -jar "yaml-legacy-to-minimessage.jar" "input.yml" "output.yml"`
+```sh
+java -jar "yaml-legacy-to-minimessage.jar" "legacy.yml" "new.yml"
+```
 
 ## How to compile?
 Run the following command:
-- `./gradlew build`
+```sh
+./gradlew build
+```
 
 ## Example
 **Input:**
