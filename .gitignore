@@ -1,32 +1,25 @@
-# Gradle
-.gradle
-build/
-!gradle/wrapper/gradle-wrapper.jar
-
-### IntelliJ IDEA ###
-.idea/
-
-### Eclipse ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
-bin/
-!**/src/main/**/bin/
-!**/src/test/**/bin/
-
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-
-### VS Code ###
-.vscode/
-
-### Mac OS ###
+# Mac OSX
 .DS_Store
+._.DS_Store
+
+# Java
+*.class
+*.jar
+
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# Eclipse IDE
+.settings/
+bin/
+.classpath
+.project
+
+# Maven
+target/
+dependency-reduced-pom.xml
+
+# Gradle
+.gradle/
+build/
