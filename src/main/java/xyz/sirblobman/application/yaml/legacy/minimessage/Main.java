@@ -6,6 +6,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import org.bukkit.configuration.InvalidConfigurationException;
@@ -52,6 +54,26 @@ public final class Main {
                     Component component = legacySerializer.deserialize(legacyString);
                     String miniMessageString = miniMessage.serialize(component);
                     configuration.set(key, miniMessageString);
+                }
+
+                if(configuration.isList(key)) {
+                    List<?> objectList = configuration.getList(key);
+                    if(objectList == null) {
+                        continue;
+                    }
+
+                    List<Object> newList = new ArrayList<>();
+                    for (Object object : objectList) {
+                        if(object instanceof String legacyString) {
+                            Component component = legacySerializer.deserialize(legacyString);
+                            String miniMessageString = miniMessage.serialize(component);
+                            newList.add(miniMessageString);
+                        } else {
+                            newList.add(object);
+                        }
+                    }
+
+                    configuration.set(key, newList);
                 }
             }
 
