@@ -42,6 +42,11 @@ public final class Main {
         MiniMessage miniMessage = MiniMessage.miniMessage();
         LegacyComponentSerializer legacySerializer = LegacyComponentSerializer.legacyAmpersand();
 
+        boolean useStrictMode = (args.length > 2 && args[2].equals("--strict"));
+        if(useStrictMode) {
+            miniMessage = MiniMessage.builder().strict(true).build();
+        }
+
         try {
             String inputString = Files.readString(inputFilePath, StandardCharsets.UTF_8);
             YamlConfiguration configuration = new YamlConfiguration();
