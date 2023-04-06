@@ -30,7 +30,7 @@ java -jar "converter.jar" "legacy.yml" "new.yml" --strict
 ## GUI Usage
 
 Open the application with Java 17. You should see the following menu:  
-[Application Screenshot](images/screenshot.png)
+![Application Screenshot](images/screenshot.png)
 
 ## How to compile?
 
