@@ -2,22 +2,30 @@ import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 
 plugins {
     id("java")
-    id("com.github.johnrengelman.shadow") version("7.1.2")
+    id("com.github.johnrengelman.shadow") version("8.1.1")
 }
-
-group = "xyz.sirblobman.application"
-version = "1.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
+    maven("https://repo.papermc.io/repository/maven-public/")
 }
 
 dependencies {
-    implementation("org.jetbrains:annotations:23.0.0")
-    implementation("org.yaml:snakeyaml:1.30")
-    implementation("com.google.guava:guava:31.1-jre")
-    implementation("net.kyori:adventure-text-serializer-legacy:4.11.0")
-    implementation("net.kyori:adventure-text-minimessage:4.11.0")
+    // Paper API
+    implementation("io.papermc.paper:paper-api:1.19.4-R0.1-SNAPSHOT") {
+        exclude("net.kyori")
+        exclude("it.unimi.dsi")
+        exclude("net.md-5")
+        exclude("org.apache.logging.log4j")
+        exclude("org.apache.maven")
+        exclude("org.checkerframework")
+        exclude("org.joml")
+        exclude("org.slf4j")
+    }
+
+    implementation("org.jetbrains:annotations:24.0.1") // JetBrains Annotations
+    implementation("net.kyori:adventure-text-serializer-legacy:4.13.0") // Adventure Text Serializer: Legacy
+    implementation("net.kyori:adventure-text-minimessage:4.13.0") // Adventure Text: MiniMessage
 }
 
 tasks {
@@ -26,15 +34,19 @@ tasks {
     }
 
     named<ShadowJar>("shadowJar") {
-        manifest {
-            attributes(mapOf("Main-Class" to "xyz.sirblobman.application.yaml.legacy.minimessage.Main"))
-        }
+        archiveFileName.set("converter.jar")
+
         minimize()
+        manifest {
+            attributes(
+                mapOf(
+                    "Main-Class" to "xyz.sirblobman.application.yaml.legacy.minimessage.Main"
+                )
+            )
+        }
     }
 }
 
-tasks {
-    build {
-        dependsOn(shadowJar)
-    }
+tasks.named("build") {
+    dependsOn("shadowJar")
 }
