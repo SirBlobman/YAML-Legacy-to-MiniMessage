@@ -25,7 +25,7 @@ dependencies {
 
     implementation("org.jetbrains:annotations:24.0.1") // JetBrains Annotations
     implementation("net.kyori:adventure-text-serializer-legacy:4.13.0") // Adventure Text Serializer: Legacy
-    implementation("net.kyori:adventure-text-minimessage:4.13.0") // Adventure Text: MiniMessage
+    implementation("net.kyori:adventure-text-minimessage:4.13.1") // Adventure Text: MiniMessage
 }
 
 tasks {
