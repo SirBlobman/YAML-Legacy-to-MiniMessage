@@ -12,7 +12,7 @@ repositories {
 
 dependencies {
     // Paper API
-    implementation("io.papermc.paper:paper-api:1.19.4-R0.1-SNAPSHOT") {
+    implementation("io.papermc.paper:paper-api:1.20-R0.1-SNAPSHOT") {
         exclude("net.kyori")
         exclude("it.unimi.dsi")
         exclude("net.md-5")
